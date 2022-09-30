@@ -19,35 +19,52 @@
       font-family: 'Poppins', sans-serif;
     }
     </style>
-
   <title>Document</title>
 </head>
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 're_pair:index' %}">영화리뷰</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 're_pair:new' %}">리뷰작성</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-<body>
-  <header></header>
-  {% block content %}
 
+
+    
+<body>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand mx-5" href="{% url 're_pair:index' %}">모두무비</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <div class="d-flex mx-auto justify-content-between">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item d-flex align-items-center">
+          <a class="nav-link" style="cursor: pointer; cursor: hand;" href="#">회사소개</a>
+        </li>
+        <li class="nav-item d-flex align-items-center">
+          <a class="nav-link" style="cursor: pointer; cursor: hand;" href="#">인재채용</a>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav ml-auto d-flex align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer; cursor: hand;" href="{% url 're_pair:new' %}">리뷰작성</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer; cursor: hand;" href="#">회원가입</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer; cursor: hand;" href="#">로그인</a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+  {% block content %}
+    
   {% endblock %}
+  <footer>
+    <div class="text-center py-3 bg-secondary text-white fixed-bottom">
+      django-board PJT by 순일, 희준
+    </div>
+  </footer> 
 </body>
 
-<footer>
-  <div class="text-center py-3 bg-secondary text-white fixed-bottom">
-    django-board PJT by 순일, 희준
-  </div>
-</footer>
 
 </html>
