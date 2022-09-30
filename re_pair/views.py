@@ -4,6 +4,7 @@ from .models import Review
 # Create your views here.
 def index(request):
     review = Review.objects.all()
+
     context = {
         "review": review,
     }

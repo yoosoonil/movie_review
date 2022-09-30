@@ -17,13 +17,20 @@
   <tbody>
     {% for i in review %}
     <tr>
+      {% if i.create_at == i.updated_at %}
+      <th scope="row">{{ i.pk }}</th>
+      <td><a href="{% url 're_pair:detail' i.pk %}">{{ i.title }}</a></td>
+      <td>{{ i.created_at }}</td>
+      <td>수정하지 않음</td>
+      {% else %}
       <th scope="row">{{ i.pk }}</th>
       <td><a href="{% url 're_pair:detail' i.pk %}">{{ i.title }}</a></td>
       <td>{{ i.created_at }}</td>
       <td>{{ i.updated_at }}</td>
+      {% endif %}
     </tr>
     {% endfor %}
-    
+
   </tbody>
 </table>
 
