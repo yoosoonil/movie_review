@@ -2,7 +2,16 @@
 {% block content %}
 
 <h1>게시판</h1>
-<a href="{% url 're_pair:new' %}">리뷰작성</a>
-{{ title }} | {{ content }}
+<a href="{% url 're_pair:new' %}">새로만들기</a>
+<ul>
+  {% for i in review %}
+  <li>리뷰번호: {{ i.pk }}
+    제목
+    <a href="{% url 're_pair:detail' i.pk %}">{{ i.title }}</a>
+    {{ i.created_at }}
+  </li>
+  {% endfor %}
+</ul>
+
 
 {% endblock %}

@@ -2,5 +2,9 @@
 {% block content %}
 
 <h1>자세히</h1>
-
+{{ review.content }}
+<br>
+<br>
+<a href="{% url 're_pair:edit' review.pk %}">리뷰수정</a>
+<a href="{% url 're_pair:delete' review.pk %}">리뷰삭제</a>
 {% endblock %}

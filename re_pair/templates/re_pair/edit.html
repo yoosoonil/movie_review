@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
+
 {% block content %}
-
-<h1>새로만들기</h1>
-
-<form action="{% url 're_pair:create' %}">
+<h1>글 수정</h1>
+<form action="{% url 're_pair:update' review.pk %}">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">제목</label>
     <input type="text" class="form-control" id="exampleInputtext" aria-describedby="" name="title">
@@ -15,8 +14,10 @@
     <div id="emailHelp" class="form-text">내용을 입력하세요</div>
   </div>
 
-  <button type="submit" class="btn btn-primary">리뷰쓰기</button>
+  <button type="submit" class="btn btn-primary">리뷰수정하기</button>
 </form>
+
+
 
 
 
