@@ -15,7 +15,10 @@
     <tr>
       <th scope="row">{{ review.content }}</th>
     </tr>
-  </tbody>
+    <tr>
+      <input class="rating rating-loading" style="top: 5;" value="{{ review.star}}" data-min="0" data-max="5" data-step="0.5" data-disabled="true" data-show-clear="false" data-size="xs" style="top: 20;">
+    </tr>
+  </tbody>  
 </table>
 
 

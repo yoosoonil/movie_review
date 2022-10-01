@@ -1,48 +1,131 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
-<div class="text-center my-3 fw-bold fs-1">
-  <p>게시판</p>
+<!-- Head -->
+<div class="text-center my-3 fw-normal fs-1">
+  <p>사람들의 <span class="fw-bold" style="color: #cc00cc;">솔직한</span> 영화, 드라마 후기</p>
 </div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-header">
-    Featured
+<!-- Main -->
+<div class="container mt-5 mb-4">
+  <div class="row mb-3">
+    <div class="col-4 mx-auto p-5" style="font-size: 0;">
+      <div class="col_">
+        {% for i in review %}
+        <a href="{% url 're_pair:detail' i.pk %}">
+          <div class="screen">
+            <div class="bottom">
+              수리남<br>
+              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+            </div>
+            <img class="img-fluid" id="img_" src="{% static 'img/수리남1.jfif' %}" alt="수리남">
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-4 mx-auto p-5" style="font-size: 0;">
+      <div class="col_">
+        {% for i in review %}
+        <a href="{% url 're_pair:detail' i.pk %}">
+          <div class="screen">
+            <div class="bottom">
+              스파이패밀리<br>
+              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+              </div>
+            <img class="img-fluid" id="img_" src="{% static 'img/스파이패밀리.jpg' %}" alt="스파이패밀리">
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-4 mx-auto p-5" style="font-size: 0;">
+      <div class="col_">
+        {% for i in review %}
+        <a href="{% url 're_pair:detail' i.pk %}">
+          <div class="screen">
+            <div class="bottom">
+              오징어게임<br>
+              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+              </div>
+            <img class="img-fluid" id="img_" src="{% static 'img/오징어게임.jpg' %}" alt="오징어게임">
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-  </ul>
+  
+  <div class="row mb-3"> 
+    <div class="col-4 mx-auto p-5" style="font-size: 0;">
+      <div class="col_">
+        {% for i in review %}
+        <a href="{% url 're_pair:detail' i.pk %}">
+          <div class="screen">
+            <div class="bottom">
+              우영우<br>
+              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+              </div>
+            <img class="img-fluid" id="img_" style="height: 510.515px" src="{% static 'img/우영우.jfif' %}" alt="우영우">
+          </div>
+        </a>
+        {% endfor %}
+      </div>  
+    </div>
+    <div class="col-4 mx-auto p-5" style="font-size: 0;">
+      <div class="col_">
+        {% for i in review %}
+        <a href="{% url 're_pair:detail' i.pk %}">
+          <div class="screen">
+            <div class="bottom">
+              종이의집<br>
+              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+              </div>
+            <img class="img-fluid" id="img_" style="height: 510.515px" src="{% static 'img/종이의집.png' %}" alt="종이의집">
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-4 mx-auto p-5" style="font-size: 0;">
+      <div class="col_">
+        {% for i in review %}
+        <a href="{% url 're_pair:detail' i.pk %}">
+          <div class="screen">
+            <div class="bottom">
+              지옥<br>
+              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+              </div>
+            <img class="img-fluid" id="img_" src="{% static 'img/지옥.jpg' %}" alt="지옥">
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
 
-<table class="table">
-  <thead class="table-primary">
-    <tr>
-      <th scope="col">리뷰번호</th>
-      <th scope="col">리뷰제목</th>
-      <th scope="col">작성시간</th>
-      <th scope="col">수정시간</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for i in review %}
-    <tr>
-      {% if i.create_at == i.updated_at %}
-      <th scope="row">{{ i.pk }}</th>
-      <td><a href="{% url 're_pair:detail' i.pk %}">{{ i.title }}</a></td>
-      <td>{{ i.created_at }}</td>
-      <td>수정하지 않음</td>
-      {% else %}
-      <th scope="row">{{ i.pk }}</th>
-      <td><a href="{% url 're_pair:detail' i.pk %}">{{ i.title }}</a></td>
-      <td>{{ i.created_at }}</td>
-      <td>{{ i.updated_at }}</td>
-      {% endif %}
-    </tr>
-    {% endfor %}
+  <table class="table">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">리뷰번호</th>
+        <th scope="col">리뷰제목</th>
+        <th scope="col">작성시간</th>
+        <th scope="col">수정시간</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in review %}
+      <tr>        
+        <th scope="row">{{ i.pk }}</th>
+        <td><a href="{% url 're_pair:detail' i.pk %}">{{ i.title }}</a></td>
+        <td>{{ i.created_at|date:'Y년 m월 d일' }}</td>
+        <td>{{ i.updated_at|date:'Y년 m월 d일' }}</td>
+      </tr>
+      {% endfor %}
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
 {% endblock %}

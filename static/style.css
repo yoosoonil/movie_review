@@ -1,0 +1,46 @@
+.col_ > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+.screen {
+  position: relative;
+  width: 100%;
+	height: 100%;
+  /* border-radius: 0.5rem; */
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow:10px 10px 10px grey
+}
+.bottom {
+  position: absolute;
+  top: 120%;
+  left: 25px;
+  z-index: 2;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  transition:all .25s;
+}
+.col_ > a:hover .bottom {
+  top: 80%;
+}
+.screen::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  z-index: 1;
+  opacity: 0;
+  border-radius: 0.5rem;
+  transition:all 0.25s;
+}
+.col_ > a:hover .screen::after {
+  opacity: 1;
+}
+

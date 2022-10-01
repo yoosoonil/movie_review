@@ -26,11 +26,13 @@ def new(request):
 def create(request):
     title = request.GET.get("title")
     content = request.GET.get("content")
-    Review.objects.create(title=title, content=content)
+    star = request.GET.get("star")
+    Review.objects.create(title=title, content=content, star=star)
 
     context = {
         "title": title,
         "content": content,
+        "star": star,
     }
 
     return redirect("re_pair:index")
