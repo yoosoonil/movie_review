@@ -1,18 +1,22 @@
 from django.shortcuts import render, redirect
 from .models import Review
-
+from django.db.models import Avg
 # Create your views here.
 def index(request):
     review = Review.objects.all()
+    rate_수리남 = Review.objects.filter(title__startswith="수리남").aggregate(Avg('star'))
+    rate_스파이 = Review.objects.filter(title__startswith="스파이패밀리").aggregate(Avg('star'))
 
     context = {
         "review": review,
+        "rate_수리남" : rate_수리남,
+        "rate_스파이" : rate_스파이,
     }
     return render(request, "re_pair/index.html", context)
 
 
-def detail(request, pk_):
-    review = Review.objects.get(pk=pk_)
+def detail(request, pk):
+    review = Review.objects.get(id = pk)
     context = {
         "review": review,
     }
@@ -64,3 +68,6 @@ def update(request, pk_):
 def delete(request, pk):
     Review.objects.get(id=pk).delete()
     return redirect("re_pair:index")
+
+def inform(request):
+    return render(request, "re_pair/inform.html")

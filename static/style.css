@@ -43,4 +43,6 @@
 .col_ > a:hover .screen::after {
   opacity: 1;
 }
-
+.age {
+  border-style: dotted;
+}

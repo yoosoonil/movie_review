@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
@@ -12,47 +13,67 @@
   <div class="row mb-3">
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
       <div class="col_">
-        {% for i in review %}
-        <a href="{% url 're_pair:detail' i.pk %}">
+        <a href="#">
           <div class="screen">
             <div class="bottom">
               수리남<br>
-              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+              <span style="font-size: 20px;">평점 : 
+                {% for key, value in rate_수리남.items %}
+                <i class="bi bi-star-fill{% if value >= 1 %}{% endif %}"></i>
+                <i class="bi bi-star-half{% if value > 2 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value >= 2 %}{% endif %}"></i>
+                <i class="bi bi-star-half{% if value > 3  %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value >= 3 %}{% endif %}"></i>
+                <i class="bi bi-star-half{% if value < 4 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value >= 4 %}{% endif %}"></i>
+                <i class="bi bi-star-half{% if value == 5 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 5 %}-o empty{% endif %}"></i> 
+                {{ value|floatformat:1 }}{% endfor %}</span>
             </div>
             <img class="img-fluid" id="img_" src="{% static 'img/수리남1.jfif' %}" alt="수리남">
           </div>
         </a>
-        {% endfor %}
       </div>
     </div>
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
       <div class="col_">
-        {% for i in review %}
-        <a href="{% url 're_pair:detail' i.pk %}">
+        
+        <a href="#">
           <div class="screen">
             <div class="bottom">
               스파이패밀리<br>
-              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+              <span style="font-size: 20px;">평점 : 
+                {% for key, value in rate_스파이.items %}
+                <i class="bi bi-star-fill{% if value >= 1 %}{% endif %}"></i>
+                <i class="bi bi-star-half{% if value > 2 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value >= 2 %}{% endif %}"></i>
+                <i class="bi bi-star-half{% if value > 3  %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value >= 3 %}{% endif %}"></i>
+                <i class="bi bi-star-half{% if value > 4 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value >= 4 %}{% endif %}"></i>
+                <i class="bi bi-star-half{% if value == 5 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 5 %}-o empty{% endif %}"></i>
+                {{ value|floatformat:1 }}{% endfor %}</span>
               </div>
-            <img class="img-fluid" id="img_" src="{% static 'img/스파이패밀리.jpg' %}" alt="스파이패밀리">
+                <img class="img-fluid" id="img_" src="{% static 'img/스파이패밀리.jpg' %}" alt="스파이패밀리">
           </div>
         </a>
-        {% endfor %}
+        
       </div>
     </div>
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
       <div class="col_">
-        {% for i in review %}
-        <a href="{% url 're_pair:detail' i.pk %}">
+        
+        <a href="#">
           <div class="screen">
             <div class="bottom">
               오징어게임<br>
-              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+              <span style="font-size: 20px;">평점 : {{ review.star }}</span>
               </div>
             <img class="img-fluid" id="img_" src="{% static 'img/오징어게임.jpg' %}" alt="오징어게임">
           </div>
         </a>
-        {% endfor %}
+        
       </div>
     </div>
   </div>
@@ -60,47 +81,46 @@
   <div class="row mb-3"> 
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
       <div class="col_">
-        {% for i in review %}
-        <a href="{% url 're_pair:detail' i.pk %}">
+        
+        <a href="#">
           <div class="screen">
             <div class="bottom">
               우영우<br>
-              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+              <span style="font-size: 20px;">평점 : {{ review.star }}</span>
               </div>
             <img class="img-fluid" id="img_" style="height: 510.515px" src="{% static 'img/우영우.jfif' %}" alt="우영우">
           </div>
         </a>
-        {% endfor %}
+        
       </div>  
     </div>
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
-      <div class="col_">
-        {% for i in review %}
-        <a href="{% url 're_pair:detail' i.pk %}">
+      <div class="col_">        
+        <a href="#">
           <div class="screen">
             <div class="bottom">
               종이의집<br>
-              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+              <span style="font-size: 20px;">평점 : {{ review.star }}</span>
               </div>
             <img class="img-fluid" id="img_" style="height: 510.515px" src="{% static 'img/종이의집.png' %}" alt="종이의집">
           </div>
         </a>
-        {% endfor %}
+        
       </div>
     </div>
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
       <div class="col_">
-        {% for i in review %}
-        <a href="{% url 're_pair:detail' i.pk %}">
+        
+        <a href="#">
           <div class="screen">
             <div class="bottom">
               지옥<br>
-              <span style="font-size: 20px;">평점 : {{ i.star }}</span>
+              <span style="font-size: 20px;">평점 : {{ review.star }}</span>
               </div>
             <img class="img-fluid" id="img_" src="{% static 'img/지옥.jpg' %}" alt="지옥">
           </div>
         </a>
-        {% endfor %}
+        
       </div>
     </div>
   </div>
@@ -110,7 +130,8 @@
     <thead class="table-primary">
       <tr>
         <th scope="col">리뷰번호</th>
-        <th scope="col">리뷰제목</th>
+        <th scope="col">영화, 드라마</th>
+        <th scope="col">평점</th>
         <th scope="col">작성시간</th>
         <th scope="col">수정시간</th>
       </tr>
@@ -120,6 +141,7 @@
       <tr>        
         <th scope="row">{{ i.pk }}</th>
         <td><a href="{% url 're_pair:detail' i.pk %}">{{ i.title }}</a></td>
+        <td>{{ i.star }}</td>
         <td>{{ i.created_at|date:'Y년 m월 d일' }}</td>
         <td>{{ i.updated_at|date:'Y년 m월 d일' }}</td>
       </tr>

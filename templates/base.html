@@ -22,6 +22,7 @@
     }
     </style>
     <link rel="icon" href="{% static '/favicon.ico' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   <title>모두무비</title>
 </head>
 
@@ -39,7 +40,7 @@
           <a class="nav-link" style="cursor: pointer; cursor: hand;" href="#">사이트소개</a>
         </li>
         <li class="nav-item d-flex align-items-center">
-          <a class="nav-link" style="cursor: pointer; cursor: hand;" href="#">영화정보</a>
+          <a class="nav-link" style="cursor: pointer; cursor: hand;" href="{% url 're_pair:inform' %}">영화정보</a>
         </li>
       </ul>
       

@@ -8,20 +8,20 @@
 <form action="{% url 're_pair:create' %}">
   <div class="row d-flex justify-content-center">
     <div class="col-6">
-      <select class="form-select" aria-label="Default select example">
+      <select class="form-select" name="title" aria-label="Default select example">
         <option selected>드라마, 영화를 선택하세요.</option>
-        <option value="1">수리남</option>
-        <option value="2">스파이패밀리</option>
-        <option value="3">오징어게임</option>
-        <option value="4">이상한변호사:우영우</option>
-        <option value="5">종이의 집</option>
-        <option value="6">지옥</option>
+        <option value="수리남">수리남</option>
+        <option value="스파이패밀리">스파이패밀리</option>
+        <option value="오징어게임">오징어게임</option>
+        <option value="이상한변호사:우영우">이상한변호사:우영우</option>
+        <option value="종이의 집">종이의 집</option>
+        <option value="지옥">지옥</option>
       </select>
      </div>
   </div>
   <div class="row d-flex justify-content-center mt-4">
     <div class="col-6">
-      <select class="form-select" name="priority" id="inputGroupSelect01">
+      <select class="form-select" name="star" id="inputGroupSelect01">
         <option selected>평점을 선택하세요.</option>
         <option value="1">⭐</option>
         <option value="2">⭐⭐</option>
@@ -29,18 +29,6 @@
         <option value="4">⭐⭐⭐⭐</option>
         <option value="5">⭐⭐⭐⭐⭐</option>
       </select>
-    </div>
-  </div>
-  <div class="row d-flex justify-content-center mt-4">
-    <div class="col-6">
-      <label class="form-label fw-bolder" for="star">평점 </label>
-      <input id="star" name="star" class="rating rating-loading" data-show-clear="false" data-min="0" data-max="5" data-step="0.5" value="5">
-    </div>
-  </div>
-  <div class="row d-flex justify-content-center mt-4">
-    <div class="col-6">
-      <label for="exampleInputEmail1" class="form-label">제목</label>
-      <input type="text" class="form-control" id="exampleInputtext" aria-describedby="" name="title">
     </div>
   </div>
   <div class="row d-flex justify-content-center mt-4">
