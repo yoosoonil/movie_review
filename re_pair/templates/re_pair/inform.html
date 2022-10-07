@@ -1,61 +1,34 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="text-center my-3 fw-normal fs-1">
-  <p><span class="fw-bold" style="color: #cc00cc;">영화, 드라마 정보</span></p>
+<div class="text-center my-5 fw-normal fs-1">
+  <p><span class="fw-bold" style="color: #cc00cc;">컨텐츠 정보</span></p>
 </div>
 
 <div class="container my-5">
-  <div class="row pb-2">
-    <div class="col-3 px-5 pb-5">
-      <img class="img-fluid" id="img_" src="{% static 'img/수리남1.jfif' %}" alt="수리남">
+  <div class="pb-2">
+    {% for i in inform %}
+    <div class="card p-4 mb-3 shadow p-3 mb-5 bg-body rounded">
+      <a class="text-decoration-none text-secondary" href="{% url 're_pair:detail' i.pk %}">
+        <span class="fs-3 fw-bolder text-black"><p>{{ i.title }}</p></span>
+        <p>{{ i.opendate|date:'Y-m-d' }}</p>
+        <p>{{ i.content }}</p></a>
+        <div class="col-12 d-flex justify-content-end">
+          <a href="{% url 're_pair:inform_edit' i.pk %}" class="mx-1 text-decoration-none fw-semibold" style="color: #35C5F0">수정</a>
+          <a href="{% url 're_pair:inform_delete' i.pk %}" class="mx-1 text-decoration-none fw-semibold" style="color: #F01313">삭제</a>
+        </div>
     </div>
-    <div class="col-9 pt-1">
-      <h4>수리남</h4>
-      <p>2022 | 18+ | 에피소드 6개</p>
-      <p><span class="fw-semibold">출연</span> 하정우, 박정민, 박해수</p>
-      <p><span class="fw-semibold">크리에이터</span> 윤종빈, 권성휘</p>
-      <p>남미 국가 수리남을 장악한 무소불위의 마약 대부로 인해 누명을 쓴 한 민간인이 국정원의 비밀 임무를 수락하며 벌어지는 이야기를 그린 넷플릭스 시리즈</p>
-    </div>
+    {% endfor %}
   </div>
-  <div class="row pb-2">
-    <div class="col-3 px-5 pb-5">
-      <img class="img-fluid" id="img_" src="{% static 'img/스파이패밀리.jpg' %}" alt="스파이패밀리">
-    </div>
-    <div class="col-9 pt-1">
-      <h4>스파이패밀리</h4>
-      <p>2022 | 15+ | 에피소드 13개 </p>
-      <p><span class="fw-semibold">출연</span> 에구치 타쿠야, 타네자키 아츠미, 하야미 사오리
-      <p><span class="fw-semibold">크리에이터</span> 후루하시카즈히로</p>
-      <p>웨스탈리스 정보국 대동과 <WISE>는 에이전트 <황혼>에게 오스타니아에서 전쟁 계획을 진행하고 있는 데스몬드의 조사를 명령한다. <황혼>은 정신과 의사 로이드 포저로 변장해서 표적과 접촉할 수 있는 명문 이든 칼리지에 아이를 입학시키기 위해 고아인 아냐를 입양한다. 사실 아냐는 다른 사람의 마음을 읽을 수 있는 초능력자였다. 어느 날, <황혼>을 노리는 마피아 조직에게 아냐가 납치당한다. 로이드는 임무를 처음부터 다시 시작하는 것을 고민하는데..</p>
+  <div class="row d-flex justify-content-center mt-4">
+    <div class="col-12 d-flex justify-content-end">
+      <a href="{% url 're_pair:inform_new' %}" class="btn btn-outline-primary mx-1 " role="button">
+        등록</a>
     </div>
   </div>
 </div>
 
-<table class="table">
-  <thead class="table-primary">
-    <tr>
-      <th scope="col">리뷰번호</th>
-      <th scope="col">영화, 드라마</th>
-      <th scope="col">평점</th>
-      <th scope="col">작성시간</th>
-      <th scope="col">수정시간</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr> 
-      {% for i in review %}
-             
-      <th scope="row">{{ i.pk }}</th>
-      <td>{{ i.title }}</td>
-      <td>{{ i.star }}</td>
-      <td>{{ i.created_at|date:'Y년 m월 d일' }}</td>
-      <td>{{ i.updated_at|date:'Y년 m월 d일' }}</td>
-    </tr>
-        
-      {% endfor %}
-  </tbody>
-</table>
+
 
 
 

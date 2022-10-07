@@ -5,7 +5,7 @@
 
 <!-- Head -->
 <div class="text-center my-3 fw-normal fs-1">
-  <p>사람들의 <span class="fw-bold" style="color: #cc00cc;">솔직한</span> 영화, 드라마 후기</p>
+  <p>사람들의 <span class="fw-bold" style="color: #cc00cc;">솔직한</span> 넷플릭스 후기</p>
 </div>
 
 <!-- Main -->
@@ -13,22 +13,25 @@
   <div class="row mb-3">
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
       <div class="col_">
-        <a href="#">
+        {% for i in inform %}
+        <a href="{% url 're_pair:detail' 1 %}">
+        {% endfor %}
           <div class="screen">
             <div class="bottom">
               수리남<br>
-              <span style="font-size: 20px;">평점 : 
-                {% for key, value in rate_수리남.items %}
-                <i class="bi bi-star-fill{% if value >= 1 %}{% endif %}"></i>
-                <i class="bi bi-star-half{% if value > 2 %}-o empty{% endif %}"></i>
-                <i class="bi bi-star-fill{% if value >= 2 %}{% endif %}"></i>
-                <i class="bi bi-star-half{% if value > 3  %}-o empty{% endif %}"></i>
-                <i class="bi bi-star-fill{% if value >= 3 %}{% endif %}"></i>
-                <i class="bi bi-star-half{% if value < 4 %}-o empty{% endif %}"></i>
-                <i class="bi bi-star-fill{% if value >= 4 %}{% endif %}"></i>
-                <i class="bi bi-star-half{% if value == 5 %}-o empty{% endif %}"></i>
-                <i class="bi bi-star-fill{% if value < 5 %}-o empty{% endif %}"></i> 
-                {{ value|floatformat:1 }}{% endfor %}</span>
+              <span style="font-size: 20px;">평점 :
+                  {% for key, value in rate_수리남.items %}
+                  {% if value != null %}    
+                  <i class="bi bi-star-fill{% if value < 1 %}-o empty{% endif %}"></i>
+                  <i class="bi bi-star-fill{% if value < 2 %}-o empty{% endif %}"></i>
+                  <i class="bi bi-star-fill{% if value < 3 %}-o empty{% endif %}"></i>
+                  <i class="bi bi-star-fill{% if value < 4 %}-o empty{% endif %}"></i>
+                  <i class="bi bi-star-fill{% if value < 5 %}-o empty{% endif %}"></i> 
+                  ({{ value|floatformat:1 }})
+                  {% else %}
+                    ({{ 0.0 }})
+                  {% endif %}{% endfor %}         
+              </span>
             </div>
             <img class="img-fluid" id="img_" src="{% static 'img/수리남1.jfif' %}" alt="수리남">
           </div>
@@ -37,96 +40,140 @@
     </div>
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
       <div class="col_">
-        
-        <a href="#">
+        {% for i in inform %}
+        <a href="{% url 're_pair:detail' 2 %}">
+        {% endfor %}
           <div class="screen">
             <div class="bottom">
               스파이패밀리<br>
-              <span style="font-size: 20px;">평점 : 
+              <span style="font-size: 20px;">평점 :
                 {% for key, value in rate_스파이.items %}
-                <i class="bi bi-star-fill{% if value >= 1 %}{% endif %}"></i>
-                <i class="bi bi-star-half{% if value > 2 %}-o empty{% endif %}"></i>
-                <i class="bi bi-star-fill{% if value >= 2 %}{% endif %}"></i>
-                <i class="bi bi-star-half{% if value > 3  %}-o empty{% endif %}"></i>
-                <i class="bi bi-star-fill{% if value >= 3 %}{% endif %}"></i>
-                <i class="bi bi-star-half{% if value > 4 %}-o empty{% endif %}"></i>
-                <i class="bi bi-star-fill{% if value >= 4 %}{% endif %}"></i>
-                <i class="bi bi-star-half{% if value == 5 %}-o empty{% endif %}"></i>
-                <i class="bi bi-star-fill{% if value < 5 %}-o empty{% endif %}"></i>
-                {{ value|floatformat:1 }}{% endfor %}</span>
-              </div>
-                <img class="img-fluid" id="img_" src="{% static 'img/스파이패밀리.jpg' %}" alt="스파이패밀리">
+                {% if value != null %}    
+                <i class="bi bi-star-fill{% if value < 1 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 2 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 3 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 4 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 5 %}-o empty{% endif %}"></i> 
+                ({{ value|floatformat:1 }})
+                {% else %}
+                  ({{ 0.0 }})
+                {% endif %}{% endfor %}</span>
+            </div>
+              <img class="img-fluid" id="img_" src="{% static 'img/스파이패밀리.jpg' %}" alt="스파이패밀리">
           </div>
         </a>
-        
       </div>
     </div>
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
       <div class="col_">
-        
-        <a href="#">
+        {% for i in inform %}
+        <a href="{% url 're_pair:detail' 3 %}">
+        {% endfor %}
           <div class="screen">
             <div class="bottom">
               오징어게임<br>
-              <span style="font-size: 20px;">평점 : {{ review.star }}</span>
+              <span style="font-size: 20px;">평점 : 
+                {% for key, value in rate_오징어.items %}
+                {% if value != null %}    
+                <i class="bi bi-star-fill{% if value < 1 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 2 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 3 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 4 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 5 %}-o empty{% endif %}"></i> 
+                ({{ value|floatformat:1 }})
+                {% else %}
+                  ({{ 0.0 }})
+                {% endif %}{% endfor %}</span>
               </div>
             <img class="img-fluid" id="img_" src="{% static 'img/오징어게임.jpg' %}" alt="오징어게임">
           </div>
         </a>
-        
       </div>
     </div>
   </div>
-  
   <div class="row mb-3"> 
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
       <div class="col_">
-        
-        <a href="#">
+        {% for i in inform %}
+        <a href="{% url 're_pair:detail' i.pk %}">
+        {% endfor %}
           <div class="screen">
             <div class="bottom">
               우영우<br>
-              <span style="font-size: 20px;">평점 : {{ review.star }}</span>
+              <span style="font-size: 20px;">평점 : 
+                {% for key, value in rate_우영우.items %}
+                {% if value != null %}    
+                <i class="bi bi-star-fill{% if value < 1 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 2 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 3 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 4 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 5 %}-o empty{% endif %}"></i> 
+                ({{ value|floatformat:1 }})
+                {% else %}
+                  ({{ 0.0 }})
+                {% endif %}{% endfor %}</span>
               </div>
             <img class="img-fluid" id="img_" style="height: 510.515px" src="{% static 'img/우영우.jfif' %}" alt="우영우">
           </div>
         </a>
-        
       </div>  
     </div>
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
       <div class="col_">        
-        <a href="#">
+        {% for i in inform %}
+        <a href="{% url 're_pair:detail' i.pk %}">
+        {% endfor %}
           <div class="screen">
             <div class="bottom">
               종이의집<br>
-              <span style="font-size: 20px;">평점 : {{ review.star }}</span>
+              <span style="font-size: 20px;">평점 : 
+                {% for key, value in rate_종이.items %}
+                {% if value != null %}    
+                <i class="bi bi-star-fill{% if value < 1 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 2 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 3 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 4 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 5 %}-o empty{% endif %}"></i> 
+                ({{ value|floatformat:1 }})
+                {% else %}
+                  ({{ 0.0 }})
+                {% endif %}{% endfor %}</span>
               </div>
             <img class="img-fluid" id="img_" style="height: 510.515px" src="{% static 'img/종이의집.png' %}" alt="종이의집">
           </div>
         </a>
-        
       </div>
     </div>
     <div class="col-4 mx-auto p-5" style="font-size: 0;">
       <div class="col_">
-        
-        <a href="#">
+        {% for i in inform %}
+        <a href="{% url 're_pair:detail' i.pk %}">
+        {% endfor %}
           <div class="screen">
             <div class="bottom">
               지옥<br>
-              <span style="font-size: 20px;">평점 : {{ review.star }}</span>
+              <span style="font-size: 20px;">평점 : 
+                {% for key, value in rate_지옥.items %}
+                {% if value != null %}    
+                <i class="bi bi-star-fill{% if value < 1 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 2 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 3 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 4 %}-o empty{% endif %}"></i>
+                <i class="bi bi-star-fill{% if value < 5 %}-o empty{% endif %}"></i> 
+                ({{ value|floatformat:1 }})
+                {% else %}
+                  ({{ 0.0 }})
+                {% endif %}{% endfor %}</span>
               </div>
             <img class="img-fluid" id="img_" src="{% static 'img/지옥.jpg' %}" alt="지옥">
           </div>
         </a>
-        
       </div>
     </div>
   </div>
 </div>
 
-  <table class="table">
+  {% comment %} <table class="table">
     <thead class="table-primary">
       <tr>
         <th scope="col">리뷰번호</th>
@@ -148,6 +195,6 @@
       {% endfor %}
 
     </tbody>
-  </table>
+  </table> {% endcomment %}
 
 {% endblock %}
