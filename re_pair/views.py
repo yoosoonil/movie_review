@@ -77,9 +77,11 @@ def update(request, pk_):
     return redirect("re_pair:detail", inform.pk)
 
 
-def delete(request, pk_):
-    Review.objects.get(id=pk_).delete()
-    return redirect("re_pair:inform")
+def review_delete(request, pk_, pk):
+    review = Review.objects.get(id=pk_)
+    Inform.objects.get(id=pk)
+    review.delete()
+    return redirect('re_pair:detail', pk)
 
 def inform(request):
     inform = Inform.objects.all()
