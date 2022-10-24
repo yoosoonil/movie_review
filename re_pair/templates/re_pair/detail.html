@@ -28,13 +28,16 @@
           <i class="bi bi-star-fill{% if i.star < 5 %}-o empty{% endif %}" style="color: #FDE508;"></i></b></p>
           <span class="text-secondary fs-6"><p>{{ i.created_at|date:'Y년 m월 d일' }}</p></span>
           {{ i.content }}
+          
           <div class="col-12 d-flex justify-content-end">
             <a href="{% url 're_pair:edit' i.pk %}" class="mx-1 text-decoration-none fw-semibold" style="color: #35C5F0">수정</a>
-            <a href="{% url 're_pair:delete' i.pk %}" class="mx-1 text-decoration-none fw-semibold" style="color: #F01313">삭제</a>
+            <a href="{% url 're_pair:delete' inform.pk i.pk %}" class="mx-1 text-decoration-none fw-semibold" style="color: #F01313">삭제</a>
           </div>
         </div>
         {% endif %}
         {% endfor %}
+        
+        
     </div>
   </div>
 

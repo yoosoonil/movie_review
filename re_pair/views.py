@@ -54,18 +54,21 @@ def create(request):
     return redirect("re_pair:index")
 
 
-def edit(request, pk_):
+def edit(request, pk):
     # get 메소드를 사용해서 특정 pk 데이터를 불러온다.
-    review = Review.objects.get(pk=pk_)
+    review = Review.objects.get(pk=pk)
     context = {
         "review": review,
     }
     return render(request, "re_pair/edit.html", context)
 
+def delete(request, pk, review_pk):
+    review = Review.objects.get(pk=review_pk)
+    review.delete()
+    return redirect('re_pair:detail', pk)
 
-def update(request, pk_):
-    review = Review.objects.get(pk=pk_)
-
+def update(request, pk):
+    review = Review.objects.get(pk=pk)
     title_ = request.GET.get("title")
     content_ = request.GET.get("content")
 
@@ -73,15 +76,12 @@ def update(request, pk_):
     review.content = content_
 
     review.save()
+    
+    return redirect("re_pair:index")
 
-    return redirect("re_pair:detail", inform.pk)
 
 
-def review_delete(request, pk_, pk):
-    review = Review.objects.get(id=pk_)
-    Inform.objects.get(id=pk)
-    review.delete()
-    return redirect('re_pair:detail', pk)
+
 
 def inform(request):
     inform = Inform.objects.all()
